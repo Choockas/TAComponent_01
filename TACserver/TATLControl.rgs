@@ -1,0 +1,34 @@
+HKCR
+{
+	TACserver.TATLControl.1 = s 'TATLControl class'
+	{
+		CLSID = s '{ec665c35-3900-4af7-9382-bb4151b5b3af}'
+		Insertable
+	}
+	TACserver.TATLControl = s 'TATLControl class'
+	{		
+		CurVer = s 'TACserver.TATLControl.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {ec665c35-3900-4af7-9382-bb4151b5b3af} = s 'TATLControl class'
+		{
+			ProgID = s 'TACserver.TATLControl.1'
+			VersionIndependentProgID = s 'TACserver.TATLControl'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove Control
+			ForceRemove Insertable
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 106'
+			MiscStatus = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			TypeLib = s '{d5dfc4aa-99dd-4911-8938-8cd82bbcdbde}'
+			Version = s '1.0'
+		}
+	}
+}

@@ -1,0 +1,54 @@
+// TACserver.idl : IDL source for TACserver
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TACserver.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(e21e4d85-540e-4318-8d63-983b16a79b12),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITATLControl : IDispatch
+{
+	[propput, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([in]OLE_COLOR clr);
+	[propget, bindable, requestedit, id(DISPID_FILLCOLOR)]
+	HRESULT FillColor([out, retval]OLE_COLOR* pclr);
+	// metha added to wizards generated
+	[propget, id(1), helpstring("property Sides")] HRESULT Sides([out, retval] short *pVal);
+	[propput, id(1), helpstring("property Sides")] HRESULT Sides([in] short newVal);
+};
+
+[
+	uuid(d5dfc4aa-99dd-4911-8938-8cd82bbcdbde),
+	version(1.0),
+]
+library TACserverLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(51025cc7-04e8-42fb-aa0f-f07f9c5f0ca4)
+	]
+	dispinterface _ITATLControlEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		uuid(ec665c35-3900-4af7-9382-bb4151b5b3af),
+		control
+	]
+	coclass TATLControl
+	{
+		[default] interface ITATLControl;
+		[default, source] dispinterface _ITATLControlEvents;
+	};
+};
+
